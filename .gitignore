@@ -1,0 +1,12 @@
+# Directories
+#/bin/
+#bin/**
+
+# no .exe file
+*.exe
+
+# no vscode file
+.vscode
+
+# no .log file
+*.log
