@@ -21,7 +21,7 @@ void itergo(int idx)
 
     for( int i = (idx==0) ? 1 : arr[idx - 1]+1; i <= N; i++)
     {
-        arr[idx] = i; // 4 라면 1, 2, 3, 4 을 순차적으로 대입
+        arr[idx] = i; // 재귀 함수를 사용한 방법
         itergo(idx + 1); 
     }
 }
