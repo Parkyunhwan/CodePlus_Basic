@@ -24,7 +24,7 @@ void DFS(int cnt)
         Print();
         return;
     }
-    for(int i=0; i < MAX; i++)
+    for(int i=0; i < MAX; i++) // 0 부터 즉 처음부터 다시 진행하는 것을 볼 수 있다.
     {
         if (Select[i]==true) continue;
         Select[i] = true;
