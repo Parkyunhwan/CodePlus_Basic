@@ -36,6 +36,24 @@ void Shape1(int x, int y)
 	Tmp_Sum = arr[x][y]+arr[x][y+1]+arr[x][y+2]+arr[x-1][y+1];
 	Answer = Bigger(Tmp_Sum, Answer);
 }
+void Shape2(int x, int y)
+{
+	int Tmp_Sum = 0;
+	Tmp_Sum = arr[x][y]+arr[x][y+1]+arr[x][y+2]+arr[x+1][y+1];
+	Answer = Bigger(Tmp_Sum, Answer);	
+}
+void Shape3(int x, int y)
+{
+	int Tmp_Sum = 0;
+	Tmp_Sum = arr[x][y]+arr[x+1][y]+arr[x+2][y]+arr[x+1][y+1];
+	Answer = Bigger(Tmp_Sum, Answer);	
+}
+void Shape4(int x, int y)
+{
+	int Tmp_Sum = 0;
+	Tmp_Sum = arr[x][y]+arr[x+1][y]+arr[x+2][y]+arr[x+1][y-1];
+	Answer = Bigger(Tmp_Sum, Answer);	
+}
 int main()
 {
 	ios::sync_with_stdio(false);
@@ -65,6 +83,9 @@ int main()
             memset(Visit, false, sizeof(Visit));
             tetromino(i, j, 0, arr[i][j]);
             if (i - 1 >= 0 && j + 2 < M) Shape1(i, j);
+			if (i + 1 < N && j + 2 < M) Shape2(i, j);
+			if (i + 2 < N && j + 2 < M) Shape3(i, j);
+			if (i + 2 < N && j - 1 >= 0) Shape4(i, j);
         }
     }
 
