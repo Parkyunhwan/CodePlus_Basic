@@ -16,6 +16,34 @@ bool prime(int n)
     return true;
 }
 
+bool prime1(int n)
+{
+    if(n < 2)
+        return false;
+    
+    for(int i=2; i<n/2; i++)
+    {
+        if(n%i==0)
+            return false;
+    }
+    pri_n++;
+    return true;
+}
+
+bool prime2(int n)
+{
+    if(n < 2)
+        return false;
+    
+    for(int i=2; i*i<n; i++)
+    {
+        if(n%i==0)
+            return false;
+    }
+    pri_n++;
+    return true;
+}
+
 int main()
 {
     int num;
