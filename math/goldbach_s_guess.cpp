@@ -2,7 +2,7 @@
 using namespace std;
 #define MAX 100000
 int num[MAX];
-bool prin[MAX];
+bool prin[MAX]={false,};
 int n1,n2;
 bool prime(int n)
 {
@@ -23,6 +23,11 @@ void check(int n)
         c=prime(i);
         if(c)
             prin[i]=true;
+        else
+        {
+            prin[i]=false;
+        }
+        
     }
 }
 
