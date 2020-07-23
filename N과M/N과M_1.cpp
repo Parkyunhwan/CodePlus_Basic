@@ -1,3 +1,12 @@
+/*
+    https://www.acmicpc.net/submit/15649
+    
+    나는 permuation을 활용하여 풀이했다.
+
+    순열과 조합이 필요한 문제는 STL을 사용해서 풀어도 되지만
+    많은 사람들이 재귀를 통해 푸는 것 같다.
+
+*/
 #include <iostream>
 #include <algorithm>
 using namespace std;
