@@ -4,34 +4,62 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+const int MAX = 2000;
 int N,M;
-bool flag;
-int result=1;
-vector<int> v[2000];
-int main()
+bool Visit[MAX], Answer;
+vector<int> V[MAX];
+
+void Input()
 {
-    int a,b;
     cin >> N >> M;
-
-    for(int i=0; i < M; i++){
-        cout << i << "\n";
+    for(int i=0; i<M; i++)
+    {
+        int a,b;
         cin >> a >> b;
-        v[a].push_back(b);
+        V[a].push_back(b);
+        V[b].push_back(a);
+    }
+}
+
+void DFS(int idx, int Cnt)
+{
+    if(Cnt == 5)
+    {
+        Answer = true;
+        return;
+    }
+    Visit[idx] = true;
+
+    for(vector<int>::size_type i=0; i< V[idx].size(); i++){
+        int Next = V[idx][i];
+        if(Visit[Next] == true) continue;
+        DFS(Next, Cnt + 1);
+        if(Answer == true) return;
+    }
+    Visit[idx] = false;
+}
+
+void Solution()
+{
+    for(int i=0; i < N; i++)
+    {
+        memset(Visit, false, sizeof(Visit));
+        DFS(i, 1);
+        if(Answer == true) break;
     }
 
-    for(int i=0; i<N; i++){
-        for(int j=i; j<N; j++){
-            flag = false;
-            for(int k=0; k<v[i].size(); k++){
-                if(v[i][k]==j){
-                    flag = true;
-                }
-            }
-            if(flag==false){
-                result = 0;
-                i=N; j=N;
-            }
-        }
-    }
-    cout << "result : " << result << "\n";
+    if(Answer == true) cout << 1 << endl;
+    else cout << 0 << endl;
+}
+
+void Solve()
+{
+    Input();
+    Solution();
+}
+
+int main(void)
+{
+    Solve();
+    return 0;
 }
