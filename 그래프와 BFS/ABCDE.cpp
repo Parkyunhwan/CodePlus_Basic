@@ -1,5 +1,13 @@
 /*
     https://www.acmicpc.net/problem/13023
+
+    다시 풀어보길..
+
+    1. 입력된 관계를 각각의 값에 저장한다.
+    2. vertex에서 다음 vertex를 찾는다. (이 때 이미 갔던 vertex는 제외하고 새로운 vertex만 가도록 한다.)
+    3. 다음 vertex가 없다면 이전 vertex로 돌아가서 다시 경로를 탐색한다.
+    4. 시작 vertex부터 연속적으로 이어진 vertex가 4개 이상이면 1을 출력한다.
+ 
 */
 #include <iostream>
 #include <vector>
