@@ -1,7 +1,7 @@
 /*
     https://www.acmicpc.net/problem/13023
 
-    다시 풀어보길..
+    [다시 풀기]
 
     1. 입력된 관계를 각각의 값에 저장한다.
     2. vertex에서 다음 vertex를 찾는다. (이 때 이미 갔던 vertex는 제외하고 새로운 vertex만 가도록 한다.)
