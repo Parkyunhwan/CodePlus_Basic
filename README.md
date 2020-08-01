@@ -1,2 +1,2 @@
 # Baekjoon
-For my ability to coding
+For my coding ability
