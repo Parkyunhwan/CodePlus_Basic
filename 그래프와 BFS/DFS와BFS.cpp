@@ -1,47 +1,56 @@
+/*
+    https://www.acmicpc.net/submit/1260
+
+    [다시 풀기]
+
+    DFS
+    1. DFS, BFS 둘 다 cnt가 필요없는 문제
+    2. cnt가 필요없는 이유는 이미 거친 정점은 다시 보지 않기 때문..? 어차피 모든 길을 탐색함
+    3. 거치지 않은 정점만 출력해준다.
+
+    BFS
+    1. BFS를 DFS처럼 푸니 시간초과가 발생함
+    2. vector를 queue로 바꿔서 해결
+    3. 거치지 않은 정점은 출력하며 모든 정점을 BFS 방법으로 탐색함
+
+    ** Sort시 주의사항 : vector의 값이 1부터 들어가므로 <= N을 포함한 sort를 해줘야함.
+*/
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <memory.h>
+#include <cstring>
+#include <queue>
 using namespace std;
 vector<int> v[1001];
 vector<int> result;
 bool Select[1001]={false,};
 int N,M,start;
-bool DFS(int idx, int cnt)
+queue<int> q;
+void DFS(int idx)
 {
-    if(cnt==N){
-        for(int i=0; i<result.size(); i++)
-            cout << result[i];
-        cout << "\n";
-        return true;
-    }
     Select[idx] = true;
     for(int i=0; i < v[idx].size(); i++){
         int element = v[idx][i];
         if(Select[element]==true) continue;
-            result.push_back(element);
-            if(DFS(element, cnt+1))
-                return true;
-            result.pop_back();
+        cout << element << " ";
+        DFS(element);
     }
-    Select[idx] = false;
-    return false;
 }
-bool BFS(int idx, int cnt)
+void BFS(int idx)
 {
+    q.push(idx);
     Select[idx]=true;
-    for(int i=0; i<v[idx].size(); i++){
-        int element = v[idx][i];
-        if(Select[element]==true) continue;
-        result.push_back(element);
-        if(result.size()==N){
-            for(int i=0; i< result.size(); i++)
-                cout << result[i] << " ";
-            cout << "\n";
-            return true;     
-        }  
+    while(!q.empty()){
+        int n = q.front();
+        q.pop();
+        for(int i=0; i<v[n].size(); i++){
+            int a = v[n][i];
+            if(Select[ a ]==true) continue;
+            Select[ a ]=true;
+            q.push(a);
+            cout << a << " ";
+        }
     }
-    BFS(result.back(), cnt+1);
 }
 int main()
 {
@@ -53,12 +62,12 @@ int main()
         v[a].push_back(b);
         v[b].push_back(a);
     }
-    for(int i=0; i<N; i++)
+    for(int i=1; i<=N; i++)
         sort(v[i].begin(), v[i].end());
-    result.push_back(start);
-    DFS(start,1);
+    cout << start << " ";
+    DFS(start);
+    cout << "\n";
     memset(Select,false,sizeof(Select));
-    result.clear();
-    result.push_back(start);
-    BFS(start,1);
+    cout << start << " ";
+    BFS(start);
 }
