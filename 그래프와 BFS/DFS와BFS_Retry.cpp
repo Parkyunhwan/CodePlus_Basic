@@ -1,3 +1,7 @@
+/*
+    https://www.acmicpc.net/problem/1260
+    1. sort시 1부터 시작한다는 것
+*/
 #include <iostream>
 #include <vector>
 #include <queue>
