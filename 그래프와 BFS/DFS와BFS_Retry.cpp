@@ -27,11 +27,12 @@ void BFS(int idx)
     {
         int next = q.front();
         q.pop();
-        Visited[next] = true;
         for(int i=0; i<v[next].size(); i++){
             int element = v[next][i];
             if(Visited[element]==true) continue;
             cout << element << " ";
+            Visited[element] = true;
+            q.push(element);
         }
     }    
 }
@@ -44,7 +45,7 @@ int main()
         v[a].push_back(b);
         v[b].push_back(a);
     }
-    for(int i=0; i<N;i++)
+    for(int i=1; i<=N;i++)
         sort(v[i].begin(),v[i].end());
     cout << start << " ";
     DFS(start);
