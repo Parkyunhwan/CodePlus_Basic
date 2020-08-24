@@ -21,9 +21,12 @@ int main()
             long long sum = overlap[i-1][1] + overlap[i-2][2] + overlap[i-3][3];
             d[i] =( (d[i-1] + d[i-2] + d[i-3]) - sum )%1000000009;
             //cout << overlap[i-1][1] << overlap[i-2][2] << overlap[i-3][3] << "\n";
-            overlap[i][1] = (d[i-1] - overlap[i-1][1])%1000000009;
-            overlap[i][2] = (d[i-2] - overlap[i-2][2])%1000000009;
-            overlap[i][3] = (d[i-3] - overlap[i-3][3])%1000000009;
+            if(d[i-1] - overlap[i-1][1]>0)
+                overlap[i][1] = (d[i-1] - overlap[i-1][1])%1000000009;
+            if(d[i-2] - overlap[i-2][2]>0)
+                overlap[i][2] = (d[i-2] - overlap[i-2][2])%1000000009;
+            if(d[i-3] - overlap[i-3][3]>0)
+                overlap[i][3] = (d[i-3] - overlap[i-3][3])%1000000009;
         }
         cout << d[N] << "\n";
     }
